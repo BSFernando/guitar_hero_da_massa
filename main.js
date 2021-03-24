@@ -16,42 +16,40 @@ var random1 = 10;
 var contador = 1;
 
 function comecar(){
-    var n = 0; 
+    var contador_letras_criadas = 0; 
     var criacao = setInterval(
-    function criar_quadrado() {
-        n = n + 1;
-        console.log(n);
-        if(n==7){
-            clearInterval(criacao);
-            document.getElementById('semaforo').style.backgroundColor = 'green';
-        };
-        var position = Math.floor(Math.random() * lista.length);
-        var quadrado = document.createElement('div');
-        var random = Math.random() * 60;
-        if(random1 > 9){
-            random1 = random1 - 0.02;
-        }else{
-            random1 = 9;
-        };
-        var letra_escolha = Math.floor(Math.random() * letras.length);
-        quadrado.setAttribute("id", "Div" + contador);
-        quadrado.textContent = letras[letra_escolha];
-        quadrado.classList.add('letra1');
-        quadrado.style.left = random + 'px';
-        quadrado.style.animation = 'block '+random1+'s  linear';
-        lista[position].appendChild(quadrado);
-        lista_letra.push(quadrado);
-        contador = contador + 1;
+        function criar_quadrado() {
 
-        $('.letra1').bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function(e) {
-
-            if(quadrado.hidden === false){
-                window.open('start.html',"_self");
-            }else{
-            $(this).remove(); 
+            if(contador_letras_criadas==6){
+                clearInterval(criacao);
+                document.getElementById('semaforo').style.backgroundColor = 'green';
             };
-        });
-    }, 700);
+
+            var position = Math.floor(Math.random() * lista.length);
+            var quadrado = document.createElement('div');
+            var random = Math.random() * 60;
+            var letra_escolha = Math.floor(Math.random() * letras.length);
+
+            quadrado.setAttribute("id", "Div" + contador);
+            quadrado.textContent = letras[letra_escolha];
+            quadrado.classList.add('letra1');
+            quadrado.style = 'left:'+random + 'px; animation: block '+random1+'s  linear;';
+            lista[position].appendChild(quadrado);
+            lista_letra.push(quadrado);
+
+            contador = contador + 1;
+            contador_letras_criadas++;
+
+            $('.letra1').bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function(e) {
+
+                if(quadrado.hidden === false){
+                    window.open('start.html',"_self");
+                }else{
+                $(this).remove(); 
+                };
+            });
+        }
+    , 850);
 };
 
 var pontuacao = 0
@@ -83,7 +81,7 @@ function validar(){
                 num_teclado = num_teclado + 1;
             }else if(num_teclado == 6){
                 num_teclado = 0;
-                setTimeout(comecar,2000);
+                setTimeout(comecar,600);
                 document.getElementById('semaforo').style.backgroundColor = 'rgb(255, 0, 0)';
             }else{
                 num_teclado = num_teclado + 1;
@@ -127,5 +125,6 @@ function criar_start(){
         maximo.appendChild(quadrado);
     }, 900);
 };
+
 
 criar_start();
