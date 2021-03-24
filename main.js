@@ -3,16 +3,15 @@ var letra2 = document.getElementById('button2');
 var letra3 = document.getElementById('button3');
 var letra4 = document.getElementById('button4');
 
-var lista_quantidade = [3,4,5,6,7,8];
-function sortear(){
-    var num_sort = Math.floor(Math.random() * lista_quantidade.length);
-    return lista_quantidade[num_sort];
-};
+// var lista_quantidade = [3,4,5,6,7,8];
+// function sortear(){
+//     var num_sort = Math.floor(Math.random() * lista_quantidade.length);
+//     return lista_quantidade[num_sort];
+// };
 
 var lista = [letra1, letra2, letra3, letra4];
 var letras = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 var lista_letra = [];
-var random1 = 10;
 var contador = 1;
 
 function comecar(){
@@ -25,21 +24,22 @@ function comecar(){
                 document.getElementById('semaforo').style.backgroundColor = 'green';
             };
 
+            // define posição horizontal e letra  
             var position = Math.floor(Math.random() * lista.length);
             var quadrado = document.createElement('div');
             var random = Math.random() * 60;
             var letra_escolha = Math.floor(Math.random() * letras.length);
-
             quadrado.setAttribute("id", "Div" + contador);
             quadrado.textContent = letras[letra_escolha];
             quadrado.classList.add('letra1');
-            quadrado.style = 'left:'+random + 'px; animation: block '+random1+'s  linear;';
+            quadrado.style = 'left:'+random + 'px; animation: block 10s  linear;';
             lista[position].appendChild(quadrado);
             lista_letra.push(quadrado);
 
             contador = contador + 1;
             contador_letras_criadas++;
 
+            // continua se letra chegar escondida, caso contrário termina jogo
             $('.letra1').bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function(e) {
 
                 if(quadrado.hidden === false){
