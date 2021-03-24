@@ -115,7 +115,7 @@ function musica(){
     return audio;
 }
 
-var maximo = document.getElementById('button5');
+var tela_press = document.getElementById('button5');
 function criar_start(){
     var inicia = setTimeout(
     function criar_press() {
@@ -123,7 +123,7 @@ function criar_start(){
         quadrado.textContent = "press any key";
         quadrado.classList.add('letra2');
         quadrado.style.animation = 'block '+15+'s  linear infinite';
-        maximo.appendChild(quadrado);
+        tela_press.appendChild(quadrado);
     }, 900);
 };
 
