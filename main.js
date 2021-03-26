@@ -25,10 +25,10 @@ function comecar(){
             };
 
             // define posição horizontal e letra  
-            var position = Math.floor(Math.random() * lista.length);
+            let position = Math.floor(Math.random() * lista.length);
             var quadrado = document.createElement('div');
-            var random = Math.random() * 60;
-            var letra_escolha = Math.floor(Math.random() * letras.length);
+            let random = Math.random() * 60;
+            let letra_escolha = Math.floor(Math.random() * letras.length);
             quadrado.setAttribute("id", "Div" + contador);
             quadrado.textContent = letras[letra_escolha];
             quadrado.classList.add('letra1');
@@ -60,9 +60,9 @@ function validar(){
     var x = String.fromCharCode(event.keyCode);
     if(jogando === false){
         // escolha música de fundo + remoção botão + inicia jogo
-        var num = [0,1,2,3,4,5,6,7]
-        var num_esc = Math.floor(Math.random() * num.length);
-        var audio = new Audio('letras/'+num_esc+'.mp3');
+        let num = [0,1,2,3,4,5,6,7]
+        let num_esc = Math.floor(Math.random() * num.length);
+        let audio = new Audio('letras/'+num_esc+'.mp3');
         audio.play(); 
         document.getElementById('button5').remove();
         jogando = true;
@@ -71,9 +71,9 @@ function validar(){
         // tecla correta + cor verde para considerar acerto
         if (x.toUpperCase() === lista_letra[0].textContent && document.getElementById('semaforo').style.backgroundColor === 'green'){
             // busca toque aleatório
-            var num = [0,1,2,3,4,5,6]
-            var num_esc1 = Math.floor(Math.random() * num.length);
-            var audio = new Audio('letras/bell'+num_esc1+'.mp3');
+            let num = [0,1,2,3,4,5,6]
+            let num_esc1 = Math.floor(Math.random() * num.length);
+            let audio = new Audio('letras/bell'+num_esc1+'.mp3');
             audio.play();  
 
             // altera cor semaforo
@@ -92,7 +92,7 @@ function validar(){
             setTimeout(function(){document.getElementById('tela').style = 'border-color:white'}, 100);
 
             // esconde e remove tecla
-            var deletar = document.getElementById('Div' + contador_deletar);
+            let deletar = document.getElementById('Div' + contador_deletar);
             deletar.hidden = true;
             lista_letra.shift(lista[0]);
             contador_deletar = contador_deletar + 1;
@@ -108,16 +108,16 @@ function validar(){
 
 // escolhe musica fundo
 function musica(){
-    var num = [0,1,2,3,4,5,6,7]
-    var num_esc = Math.floor(Math.random() * num.length);
-    var audio = new Audio('letras/'+num_esc+'.mp3');
+    let num_musica_fundo = [0,1,2,3,4,5,6,7]
+    let num_esc = Math.floor(Math.random() * num_musica_fundo.length);
+    let audio = new Audio('letras/'+num_esc+'.mp3');
     audio.muted = true;  
     return audio;
 }
 
 var tela_press = document.getElementById('button5');
 function criar_start(){
-    var inicia = setTimeout(
+    let inicia = setTimeout(
     function criar_press() {
         var quadrado = document.createElement('div');
         quadrado.textContent = "press any key";
